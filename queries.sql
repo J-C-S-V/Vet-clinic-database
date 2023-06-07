@@ -24,6 +24,11 @@ WHERE name NOT IN ('Gabumon');
 SELECT * FROM animals
 WHERE weight_kg BETWEEN 10.4 AND 17.3;
 
+BEGIN;
+UPDATE animals
+SET species = 'unspecified';
+SELECT species FROM animals;
+ROLLBACK;
 
 BEGIN;
 UPDATE animals
@@ -58,9 +63,3 @@ GROUP BY species;
 SELECT species, AVG(escape_attempts) FROM animals
 WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31'
 GROUP BY species;
-
-
-
-
-
-
