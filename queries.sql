@@ -30,6 +30,7 @@ SET species = 'unspecified';
 SELECT species FROM animals;
 ROLLBACK;
 
+
 BEGIN;
 UPDATE animals
 SET species = 'digimon' WHERE name LIKE '%mon';
@@ -63,3 +64,36 @@ GROUP BY species;
 SELECT species, AVG(escape_attempts) FROM animals
 WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31'
 GROUP BY species;
+
+SELECT name
+FROM animals JOIN owners ON animals.owner_id = owners.id
+WHERE owners.full_name = 'Melody Pond';
+
+SELECT animals.name
+FROM animals JOIN species ON animals.species_id = species.id
+WHERE species.name = 'Pokemon';
+
+SELECT owners.full_name, animals.name
+FROM owners LEFT JOIN animals ON owners.id = animals.owner_id;
+
+SELECT species.name, COUNT(*)
+FROM species JOIN animals ON species.id = animals.species_id
+GROUP BY species.name;
+
+SELECT a.name
+FROM animals AS a
+JOIN species AS s ON a.species_id = s.id
+JOIN owners AS o ON a.owner_id = o.id
+WHERE s.name = 'Digimon' AND o.full_name = 'Jennifer Orwell';
+
+SELECT animals.name
+FROM animals
+JOIN owners ON animals.owner_id = owners.id
+WHERE owners.full_name = 'Dean Winchester' AND animals.escape_attempts = 0;
+
+SELECT owners.full_name, COUNT(*) AS animal_count
+FROM owners
+JOIN animals ON owners.id = animals.owner_id
+GROUP BY owners.full_name
+ORDER BY animal_count DESC
+LIMIT 1;
