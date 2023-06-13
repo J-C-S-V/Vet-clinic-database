@@ -1,6 +1,10 @@
 <a name="readme-top"></a>
 # Vet Clinic Database
 
+![image](https://github.com/J-C-S-V/Vet-clinic-database/assets/109441277/bf7b5aa9-6fc5-4d3b-a36c-d563f6f2ba43)
+
+
+
 # 📗 Table of Contents
 
 - [📖 About the Project](#about-project)
